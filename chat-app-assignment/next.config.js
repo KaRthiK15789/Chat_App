@@ -1,5 +1,6 @@
 // next.config.js
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
     return [
@@ -18,7 +19,7 @@ const nextConfig = {
               connect-src *;
               object-src 'none';
               frame-src 'none';
-            `.replace(/\s{2,}/g, " ").trim(),
+            `.replace(/\s{2,}/g, " ").trim(), // Minify policy string
           },
         ],
       },
