@@ -31,6 +31,27 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)", // apply to all routes
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: `
+              default-src 'self';
+              font-src 'self' https://fonts.gstatic.com;
+              style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+              script-src 'self' 'unsafe-eval' 'unsafe-inline';
+              connect-src *;
+              img-src 'self' data: https://*;
+              object-src 'none';
+            `.replace(/\s{2,}/g, ' ').trim(),
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
