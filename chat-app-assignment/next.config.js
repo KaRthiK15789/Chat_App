@@ -34,19 +34,20 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)", // apply to all routes
+        source: "/(.*)",
         headers: [
           {
             key: "Content-Security-Policy",
             value: `
               default-src 'self';
-              font-src 'self' https://fonts.gstatic.com;
+              font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+              style-src-elem 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com;
               script-src 'self' 'unsafe-eval' 'unsafe-inline';
               connect-src *;
               img-src 'self' data: https://*;
               object-src 'none';
-            `.replace(/\s{2,}/g, ' ').trim(),
+            `.replace(/\s{2,}/g, " ").trim(),
           },
         ],
       },
