@@ -40,12 +40,12 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: `
               default-src 'self';
-              font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
-              style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+              style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com;
               style-src-elem 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com;
-              script-src 'self' 'unsafe-eval' 'unsafe-inline';
-              connect-src *;
+              font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval';
               img-src 'self' data: https://*;
+              connect-src *;
               object-src 'none';
             `.replace(/\s{2,}/g, " ").trim(),
           },
